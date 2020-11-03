@@ -68,7 +68,7 @@ export default {
   '@nuxtjs/axios',
   '@nuxtjs/pwa'
 ],
-i18n: {}
+i18n: {},
   purgeCSS: {
     whitelist: ['hidden'],
     whitelistPatterns: [/md:w-[1-6]/]
