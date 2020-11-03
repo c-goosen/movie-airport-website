@@ -1,5 +1,9 @@
+const { VuetifyProgressiveModule } = require('vuetify-loader')
+const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 export default {
-  mode: 'universal',
+  ssr: true,
+  target: 'static',
+  // mode: 'universal',
   /*
    ** Headers of the page
    */
@@ -27,29 +31,91 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [
+    '~/plugins/anime_vue.js',
+    '~/plugins/vuetify.js'
+  ],
   /*
    ** Nuxt.js dev-modules
    */
+  vuetify: {
+    treeShake: {
+      loaderOptions: {
+        progressiveImages: true
+      }
+    },
+    optionsPath: './vuetify.options.js'
+  },
+
   buildModules: [
     // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
-    '@nuxtjs/tailwindcss'
+    '@nuxt/typescript-build',
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/vuetify',
   ],
   /*
    ** Nuxt.js modules
    */
-  modules: ['nuxt-svg-loader'],
+  modules: [
+    'nuxt-i18n',
+    'nuxt-buefy',
+    'nuxt-svg-loader',
+  // https://go.nuxtjs.dev/axios
+  // https://go.nuxtjs.dev/pwa
+  // https://go.nuxtjs.dev/content
+  '@nuxt/content',
+  '@nuxtjs/proxy',
+  '@nuxtjs/axios',
+  '@nuxtjs/pwa'
+],
+i18n: {}
   purgeCSS: {
     whitelist: ['hidden'],
     whitelistPatterns: [/md:w-[1-6]/]
   },
+  axios: {
+    proxy: true
+  },
+
+  proxy: {
+    '/api': {
+      target: 'https://public-api.adsbexchange.com',
+      pathRewrite: {
+        '^/api' : '/'
+        }
+    }},
   /*
    ** Build configuration
    */
+  vuetify: {
+    customVariables: ['~/assets/variables.scss'],
+    // theme: {
+    //   dark: true,
+    //   themes: {
+    //     dark: {
+    //       primary: colors.blue.darken2,
+    //       accent: colors.grey.darken3,
+    //       secondary: colors.amber.darken3,
+    //       info: colors.teal.lighten1,
+    //       warning: colors.amber.base,
+    //       error: colors.deepOrange.accent4,
+    //       success: colors.green.accent3
+    //     }
+    //   }
+    // }
+  },
+
   build: {
     /*
      ** You can extend webpack config here
      */
+    analyze: true,
+    // or
+    analyze: {
+      analyzerMode: 'static'
+    },
+    transpile: ['vuetify/lib'],
+    // plugins: [new VuetifyLoaderPlugin()],
     extend(config, ctx) {
       loaders: {
         file: {

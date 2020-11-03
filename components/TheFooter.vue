@@ -11,9 +11,16 @@
           <ul class="list-reset mb-6">
             <li class="mt-2 inline-block mr-2 md:block md:mr-0">
               <a
+                href="flightsboard"
+                class="no-underline hover:underline text-gray-800 hover:text-orange-500"
+                >Aankoms</a
+              >
+            </li>
+            <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+              <a
                 href="#"
                 class="no-underline hover:underline text-gray-800 hover:text-orange-500"
-                >FAQ</a
+                >Vlugte</a
               >
             </li>
             <li class="mt-2 inline-block mr-2 md:block md:mr-0">
@@ -21,13 +28,6 @@
                 href="#"
                 class="no-underline hover:underline text-gray-800 hover:text-orange-500"
                 >Help</a
-              >
-            </li>
-            <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-              <a
-                href="#"
-                class="no-underline hover:underline text-gray-800 hover:text-orange-500"
-                >Support</a
               >
             </li>
           </ul>
@@ -104,10 +104,12 @@
           </ul>
         </div>
       </div>
+        <p class="no-underline hover:underline text-gray-800 hover:text-orange-500">Webwerf deur: www.anomaloustech.co.za</p>
+
     </div>
 
-    <a href="https://www.freepik.com/free-photos-vectors/background"
-      >Background vector created by freepik - www.freepik.com</a
+    <a href="https://www.anomaloustech.co.za"
+      >Webwerf deur Christo Goosen</a
     >
   </footer>
 </template>

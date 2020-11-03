@@ -13,6 +13,7 @@
           Aankoms
         </h1>
         <v-data-table
+          style="margin: 0px; padding: 0px; width: 100%"
           :headers="headers"
           :items="flights"
           class="elevation-1"
@@ -23,7 +24,6 @@
           :sort-desc="[false]"
           fill-width
           fluid
-          style="margin: 0px; padding: 0px; width: 100%"
         >
           <template v-slot:item.delayed="{ item }">
             <v-chip

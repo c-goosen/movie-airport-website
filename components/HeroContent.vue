@@ -9,21 +9,21 @@
       >
         <p class="uppercase tracking-loose w-full">What business are you?</p>
         <h1 class="my-4 text-5xl font-bold leading-tight">
-          Main Hero Message to sell yourself!
+          Wereld klas internationale lughawe
         </h1>
         <p class="leading-normal text-2xl mb-8">
-          Sub-hero message, not too long and not too short. Make it just right!
+          Kies jou punt B!
         </p>
 
         <button
           class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg"
         >
-          Subscribe
+          Boek 'n vlug'
         </button>
       </div>
       <!--Right Col-->
       <div class="w-full md:w-3/5 py-6 text-center">
-        <img class="w-full md:w-4/5 z-50" src="~/assets/img/hero.png" alt />
+        <img class="w-full md:w-4/5 z-50" src="~assets/img/connected-world.svg?inline" alt />
       </div>
     </div>
   </div>
