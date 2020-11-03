@@ -116,11 +116,15 @@ i18n: {},
     },
     transpile: ['vuetify/lib'],
     // plugins: [new VuetifyLoaderPlugin()],
-    extend(config, ctx) {
-      loaders: {
-        file: {
-          esModule: false
-        }
+    extend(config, { isDev, isClient }) {
+      // ..
+      config.module.rules.push({
+        test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
+        loader: 'file-loader'
+      })
+      // Sets webpack's mode to development if `isDev` is true.
+      if (isDev) {
+        config.mode = 'development'
       }
     }
   }
