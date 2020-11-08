@@ -1,7 +1,7 @@
 const { VuetifyProgressiveModule } = require('vuetify-loader')
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 export default {
-  ssr: true,
+  ssr: false,
   target: 'static',
   // mode: 'universal',
   /*
@@ -27,31 +27,23 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: [
+  ],
   /*
    ** Plugins to load before mounting the App
    */
   plugins: [
     '~/plugins/anime_vue.js',
-    '~/plugins/vuetify.js'
   ],
   /*
    ** Nuxt.js dev-modules
    */
-  vuetify: {
-    treeShake: {
-      loaderOptions: {
-        progressiveImages: true
-      }
-    },
-    optionsPath: './vuetify.options.js'
-  },
+
 
   buildModules: [
     // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
     '@nuxt/typescript-build',
     '@nuxtjs/tailwindcss',
-    '@nuxtjs/vuetify',
   ],
   /*
    ** Nuxt.js modules
@@ -87,35 +79,34 @@ i18n: {},
   /*
    ** Build configuration
    */
-  vuetify: {
-    customVariables: ['~/assets/variables.scss'],
-    // theme: {
-    //   dark: true,
-    //   themes: {
-    //     dark: {
-    //       primary: colors.blue.darken2,
-    //       accent: colors.grey.darken3,
-    //       secondary: colors.amber.darken3,
-    //       info: colors.teal.lighten1,
-    //       warning: colors.amber.base,
-    //       error: colors.deepOrange.accent4,
-    //       success: colors.green.accent3
-    //     }
-    //   }
-    // }
-  },
+
 
   build: {
     /*
      ** You can extend webpack config here
      */
+    html: {
+      minify:{
+              collapseBooleanAttributes: true,
+        decodeEntities: true,
+        minifyCSS: true,
+        minifyJS: true,
+        processConditionalComments: true,
+        removeEmptyAttributes: true,
+        removeRedundantAttributes: true,
+        trimCustomFragments: true,
+        useShortDoctype: true
+      }
+    },
+    loaders: {
+      vueStyle: { manualInject: true }
+    },
+    treeShake: true,
     analyze: true,
     // or
     analyze: {
       analyzerMode: 'static'
     },
-    transpile: ['vuetify/lib'],
-    // plugins: [new VuetifyLoaderPlugin()],
     extend(config, { isDev, isClient }) {
       // ..
       config.module.rules.push({

@@ -1,18 +1,34 @@
 <template>
+
 <div class="pt-24">
     <div
       class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center"
     >
       <!--Left Col-->
       <div
-        class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left"
+        class="flex flex-col w-full justify-center items-start text-center"
       >
         <!-- <p class="uppercase tracking-loose w-full">What business are you?</p> -->
         <p></p>
         <h1 class="my-4 text-5xl font-bold leading-tight">
           Aankoms
         </h1>
-        <v-data-table
+        <div class="box">
+        <article class="media">
+          <div class="media-center">
+            <!-- <figure class="image is-64x64">
+              <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+            </figure> -->
+          </div>
+          <div class="media-content">
+            <div class="content">
+          <b-table :data="flights" :columns="columns"></b-table>
+            </div>
+          </div>
+        </article>
+        </div>
+        <p></p>
+        <!-- <v-data-table
           style="margin: 0px; padding: 0px; width: 100%"
           :headers="headers"
           :items="flights"
@@ -35,7 +51,7 @@
               {{ item.delayed }}
             </v-chip>
           </template>
-        </v-data-table>
+        </v-data-table> -->
 </div>
       </div>
       </div>
@@ -64,7 +80,30 @@ export default {
           { text: 'Status', value: 'delayed' },
         ],
         flights: [
-        ]
+        ],
+        columns: [
+                {
+                    field: 'arrival_time',
+                    label: 'Arrival Time',
+                },
+                {
+                    field: 'icao',
+                    label: 'Flight No.',
+                },
+                {
+                    field: 'country',
+                    label: 'Coming From',
+                },
+                {
+                    field: 'gate',
+                    label: 'Gate',
+                    centered: true
+                },
+                {
+                    field: 'delayed',
+                    label: 'Status',
+                }
+            ]
   }
         
         
@@ -145,3 +184,7 @@ export default {
 //         }
 // }
 </script>
+
+<style>
+
+</style>
