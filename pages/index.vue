@@ -10,7 +10,6 @@
 
 <script>
 
-console.log("Testing")
 
 import Hero from '@/components/Hero'
 import Features from '@/components/Features'
@@ -28,5 +27,5 @@ export default {
     'call-to-action': CallToAction
   }
 }
-console.log("Website gebou deur Christo Goosen - Anomaloustech.co.za");
+console.log("Webwerf gebou deur Christo Goosen - Anomaloustech.co.za");
 </script>

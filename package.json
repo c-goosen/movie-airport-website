@@ -31,7 +31,6 @@
     "nuxt-edge": "^2.14.8-26735067.baf94d31",
     "nuxt-i18n": "^6.15.4",
     "nuxt-svg-loader": "^1.2.0",
-    "random-flight-generator": "^1.0.17",
     "vue-animejs": "^2.1.1",
     "vue-loader": "^15.9.3",
     "vue-time-board": "^1.1.0"

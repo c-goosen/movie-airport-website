@@ -2,7 +2,7 @@
   <footer class="bg-white">
     <div class="container mx-auto px-8">
       <div class="w-full flex flex-col md:flex-row py-6">
-        <div class="flex-1 mb-6">
+        <div class="flex-1 mb-6 p-4">
           <logo />
         </div>
 
@@ -11,14 +11,14 @@
           <ul class="list-reset mb-6">
             <li class="mt-2 inline-block mr-2 md:block md:mr-0">
               <a
-                href="flightsboard"
+                href="/flightsboard"
                 class="no-underline hover:underline text-gray-800 hover:text-orange-500"
                 >Aankoms</a
               >
             </li>
             <li class="mt-2 inline-block mr-2 md:block md:mr-0">
               <a
-                href="#"
+                href="/flightbooking"
                 class="no-underline hover:underline text-gray-800 hover:text-orange-500"
                 >Vlugte</a
               >
@@ -27,7 +27,7 @@
               <a
                 href="#"
                 class="no-underline hover:underline text-gray-800 hover:text-orange-500"
-                >Help</a
+                >Hulp</a
               >
             </li>
           </ul>
@@ -39,14 +39,14 @@
               <a
                 href="#"
                 class="no-underline hover:underline text-gray-800 hover:text-orange-500"
-                >Terms</a
+                >Terme</a
               >
             </li>
             <li class="mt-2 inline-block mr-2 md:block md:mr-0">
               <a
                 href="#"
                 class="no-underline hover:underline text-gray-800 hover:text-orange-500"
-                >Privacy</a
+                >Privaatheid</a
               >
             </li>
           </ul>
@@ -84,33 +84,30 @@
               <a
                 href="#"
                 class="no-underline hover:underline text-gray-800 hover:text-orange-500"
-                >Official Blog</a
+                >Blog</a
               >
             </li>
             <li class="mt-2 inline-block mr-2 md:block md:mr-0">
               <a
                 href="#"
                 class="no-underline hover:underline text-gray-800 hover:text-orange-500"
-                >About Us</a
+                >Oor Ons</a
               >
             </li>
             <li class="mt-2 inline-block mr-2 md:block md:mr-0">
               <a
                 href="#"
                 class="no-underline hover:underline text-gray-800 hover:text-orange-500"
-                >Contact</a
+                >Kontak Ons</a
               >
             </li>
           </ul>
         </div>
       </div>
-        <p class="no-underline hover:underline text-gray-800 hover:text-orange-500">Webwerf deur: www.anomaloustech.co.za</p>
+        <p href="https://www.anomaloustech.co.za" class="no-underline hover:underline text-gray-800 hover:text-orange-500">Webwerf deur: <a href="https://www.anomaloustech.co.za">www.anomaloustech.co.za</a></p>
 
     </div>
 
-    <a href="https://www.anomaloustech.co.za"
-      >Webwerf deur Christo Goosen</a
-    >
   </footer>
 </template>
 

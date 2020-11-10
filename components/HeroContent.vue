@@ -7,19 +7,20 @@
       <div
         class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left"
       >
-        <p class="uppercase tracking-loose w-full">What business are you?</p>
         <h1 class="my-4 text-5xl font-bold leading-tight">
-          Wereld klas internationale lughawe
+          Wêreld Klas Internasionale Lughawe
         </h1>
         <p class="leading-normal text-2xl mb-8">
           Kies jou punt B!
         </p>
 
-        <button
+        <button 
+         @click="$router.push('flightsboard')"
           class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg"
         >
-          Boek 'n vlug'
+          Boek 'n vlug
         </button>
+        <p></p>
       </div>
       <!--Right Col-->
       <div class="w-full md:w-3/5 py-6 text-center">

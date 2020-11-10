@@ -4,68 +4,49 @@
     <div
       class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center"
     >
-      <!--Left Col-->
       <div
-        class="flex flex-col w-full justify-center items-start text-center"
+        class="flex flex-col w-full justify-center items-start text-center md:text-left"
       >
-        <!-- <p class="uppercase tracking-loose w-full">What business are you?</p> -->
         <p></p>
         <h1 class="my-4 text-5xl font-bold leading-tight">
           Aankoms
         </h1>
-        <div class="box">
-        <article class="media">
+        <div class="box w-full">
           <div class="media-center">
-            <!-- <figure class="image is-64x64">
-              <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
-            </figure> -->
-          </div>
-          <div class="media-content">
-            <div class="content">
+     
           <b-table :data="flights" :columns="columns"></b-table>
-            </div>
           </div>
-        </article>
+  
         </div>
         <p></p>
-        <!-- <v-data-table
-          style="margin: 0px; padding: 0px; width: 100%"
-          :headers="headers"
-          :items="flights"
-          class="elevation-1"
-          hide-default-footer
-          loading
-          loading-text="Laai... vlugte oppad.."
-          :sort-by="['arrival_time']"
-          :sort-desc="[false]"
-          fill-width
-          fluid
-        >
-          <template v-slot:item.delayed="{ item }">
-            <v-chip
-              class="ma-2"
-              text-color="white"
-              :color="getColor(item.delayed)" 
-              dark
-            >
-              {{ item.delayed }}
-            </v-chip>
-          </template>
-        </v-data-table> -->
+      
 </div>
       </div>
       </div>
 </template>  
         
-        <!-- :color="this.getColor(item.delayed)" -->
 
 
 <script>
+import { mapState } from 'vuex';
 import * as moment from 'moment';
-import flightGenerator from 'random-flight-generator';
 export default {
+   head: {
+    script: [
+      {
+        src: 'https://unpkg.com/buefy/dist/buefy.min.js'
+      }
+    ],
+    link: [
+      {
+        rel: 'stylesheet',
+        href: 'https://unpkg.com/buefy/dist/buefy.min.css'
+      }
+    ]
+  },
     data() {
       return {
+        aircraft:[],
         headers: [
           {
             text: 'Flights Arriving',
@@ -89,6 +70,10 @@ export default {
                 {
                     field: 'icao',
                     label: 'Flight No.',
+                },
+                {
+                    field: 'airport_code',
+                    label: 'Airport',
                 },
                 {
                     field: 'country',
@@ -124,18 +109,7 @@ export default {
     },
   },
   async fetch() {
-      // // this.aircraft = await fetch(
-      // //   'api/VirtualRadar/AircraftList.json'
-      // // ).then(res => res.json())
-      // // // console.log(this.aircraft)
-      // // this.za_aircraft =  this.aircraft['acList'].filter(function(aircraft) {
-	    // //   return aircraft.Cou == "South Africa"
-      // // });
-      // // let airlines = this.za_aircraft.filter(function(aircraft) {
-      // //   return aircraft.Op
-      // // });
-      // console.log(airlines);
-      // console.log(this.za_aircraf)
+
       let current_time = new Date()
       let time_back = new Date(
               current_time.getFullYear(), 
@@ -143,34 +117,39 @@ export default {
               current_time.getDate(), 
               current_time.getHours() + 2, 
               current_time.getMinutes());
-      const options = { 
-            minDistance: 5,
-             maxDistance: 100,
-             includeCountries: ["ZA", "GB","SA"] 
-        }
         let flight_status = ['Delayed', 'On time', 'Unkown', 'Waiting at gate']
+        let airports = ["GOG", "CPT", "MPM", "BFN", "MBD", "JNB", "DUR", "GRJ", "MQP"]
         let airport_gate = ["A", "B", "C"]
         let airport_gate_no = [0,1,2,3,4]
+        let flight_no = ["4Z628", "JE143", "4Z323", "4Z618"]
 
         for (let i = 0; i < 10; i++) {
-            time_back = moment(time_back).add(30, 'm').toDate();
-            let random = Math.floor(Math.random() * flight_status.length);
+           let random_flight = Math.floor(Math.random() * this.$store.state.flights.flights.length);
+           let curr_flight = this.$store.state.flights.flights[random_flight];
+           time_back = moment(time_back).add(30, 'm').toDate();
+           let random = Math.floor(Math.random() * flight_status.length);
             let random_gate = Math.floor(Math.random() * airport_gate.length);
             let random_gate_no = Math.floor(Math.random() * airport_gate_no.length);
-            let generated_flight = flightGenerator(options);
+
             this.flights.push({
-                name: generated_flight.arrival.name,
-                icao: generated_flight.arrival.icao,
-                country: generated_flight.arrival.country,
+                icao: curr_flight.flight_no,
+                airport_code: curr_flight.origin,
+                country: curr_flight.country,
                 gate: airport_gate[random_gate] + "" + airport_gate_no[random_gate_no],
                 delayed:  i > 4 ? flight_status[random] : 'Arrived',
-                arrival_time: (moment(time_back)).format('DD-MMM : HH:mm:ss')
-        });
+                  arrival_time: (moment(time_back)).format('DD-MMM : HH:mm:ss')
+            });
+
+
+          
         
       
       }
+      // console.log(this.$store.state.flights.flights)
+     
     //   this.flights.reverse()
-    }
+  }
+ 
   }
 // export default {
 //         async asyncData({ params }) {
@@ -184,7 +163,3 @@ export default {
 //         }
 // }
 </script>
-
-<style>
-
-</style>
